@@ -21,6 +21,23 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		4C0293B02AE1D4550093CCBA /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C02939F2AE1D4540093CCBA /* MockNetworkService.swift */; };
+		4C0293B12AE1D4550093CCBA /* InstrumentedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A02AE1D4540093CCBA /* InstrumentedExtension.swift */; };
+		4C0293B22AE1D4550093CCBA /* FileManager+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A12AE1D4540093CCBA /* FileManager+Testable.swift */; };
+		4C0293B32AE1D4550093CCBA /* EventHub+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A22AE1D4540093CCBA /* EventHub+Test.swift */; };
+		4C0293B42AE1D4550093CCBA /* CountDownLatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A32AE1D4540093CCBA /* CountDownLatch.swift */; };
+		4C0293B52AE1D4550093CCBA /* MockHitProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A42AE1D4540093CCBA /* MockHitProcessor.swift */; };
+		4C0293B62AE1D4550093CCBA /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A52AE1D4540093CCBA /* TestUtils.swift */; };
+		4C0293B72AE1D4550093CCBA /* TestableExtensionRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A62AE1D4540093CCBA /* TestableExtensionRuntime.swift */; };
+		4C0293B82AE1D4550093CCBA /* NetworkRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A72AE1D4540093CCBA /* NetworkRequestHelper.swift */; };
+		4C0293B92AE1D4550093CCBA /* AnyCodable+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A82AE1D4540093CCBA /* AnyCodable+Array.swift */; };
+		4C0293BA2AE1D4550093CCBA /* TestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293A92AE1D4540093CCBA /* TestBase.swift */; };
+		4C0293BB2AE1D4550093CCBA /* UserDefaults+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AA2AE1D4550093CCBA /* UserDefaults+Test.swift */; };
+		4C0293BC2AE1D4550093CCBA /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AB2AE1D4550093CCBA /* TestConstants.swift */; };
+		4C0293BD2AE1D4550093CCBA /* MockDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AC2AE1D4550093CCBA /* MockDataStore.swift */; };
+		4C0293BE2AE1D4550093CCBA /* MockDataQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AD2AE1D4550093CCBA /* MockDataQueue.swift */; };
+		4C0293BF2AE1D4550093CCBA /* RealNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AE2AE1D4550093CCBA /* RealNetworkService.swift */; };
+		4C0293C02AE1D4550093CCBA /* TestableNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AF2AE1D4550093CCBA /* TestableNetworkRequest.swift */; };
 		72EC4ED272DA96D1B2F44F4D /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E05720B5778E784DC19DA9C /* Pods_UnitTests.framework */; };
 		D4ABABAE251A7D95008076BF /* AEPTestUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D444995F2519506B0093B364 /* AEPTestUtils.framework */; };
 		E6CACBEEB618C1273B24F1AE /* Pods_AEPTestUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C185B9927DF9E0701D766B /* Pods_AEPTestUtils.framework */; };
@@ -60,6 +77,23 @@
 		12C2D99438B3AFCC415CE05C /* Pods-AEPTestUtils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEPTestUtils.debug.xcconfig"; path = "Target Support Files/Pods-AEPTestUtils/Pods-AEPTestUtils.debug.xcconfig"; sourceTree = "<group>"; };
 		1E05720B5778E784DC19DA9C /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34C185B9927DF9E0701D766B /* Pods_AEPTestUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEPTestUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C02939F2AE1D4540093CCBA /* MockNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		4C0293A02AE1D4540093CCBA /* InstrumentedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentedExtension.swift; sourceTree = "<group>"; };
+		4C0293A12AE1D4540093CCBA /* FileManager+Testable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager+Testable.swift"; sourceTree = "<group>"; };
+		4C0293A22AE1D4540093CCBA /* EventHub+Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventHub+Test.swift"; sourceTree = "<group>"; };
+		4C0293A32AE1D4540093CCBA /* CountDownLatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDownLatch.swift; sourceTree = "<group>"; };
+		4C0293A42AE1D4540093CCBA /* MockHitProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockHitProcessor.swift; sourceTree = "<group>"; };
+		4C0293A52AE1D4540093CCBA /* TestUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
+		4C0293A62AE1D4540093CCBA /* TestableExtensionRuntime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableExtensionRuntime.swift; sourceTree = "<group>"; };
+		4C0293A72AE1D4540093CCBA /* NetworkRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestHelper.swift; sourceTree = "<group>"; };
+		4C0293A82AE1D4540093CCBA /* AnyCodable+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AnyCodable+Array.swift"; sourceTree = "<group>"; };
+		4C0293A92AE1D4540093CCBA /* TestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestBase.swift; sourceTree = "<group>"; };
+		4C0293AA2AE1D4550093CCBA /* UserDefaults+Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Test.swift"; sourceTree = "<group>"; };
+		4C0293AB2AE1D4550093CCBA /* TestConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		4C0293AC2AE1D4550093CCBA /* MockDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataStore.swift; sourceTree = "<group>"; };
+		4C0293AD2AE1D4550093CCBA /* MockDataQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataQueue.swift; sourceTree = "<group>"; };
+		4C0293AE2AE1D4550093CCBA /* RealNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealNetworkService.swift; sourceTree = "<group>"; };
+		4C0293AF2AE1D4550093CCBA /* TestableNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableNetworkRequest.swift; sourceTree = "<group>"; };
 		D444995F2519506B0093B364 /* AEPTestUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AEPTestUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4967534251130D3001F5F95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4ABABDA251A8142008076BF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -124,6 +158,23 @@
 		D4D5B4E9242EBB1600CAB6E4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				4C0293A82AE1D4540093CCBA /* AnyCodable+Array.swift */,
+				4C0293A32AE1D4540093CCBA /* CountDownLatch.swift */,
+				4C0293A22AE1D4540093CCBA /* EventHub+Test.swift */,
+				4C0293A12AE1D4540093CCBA /* FileManager+Testable.swift */,
+				4C0293A02AE1D4540093CCBA /* InstrumentedExtension.swift */,
+				4C0293AD2AE1D4550093CCBA /* MockDataQueue.swift */,
+				4C0293AC2AE1D4550093CCBA /* MockDataStore.swift */,
+				4C0293A42AE1D4540093CCBA /* MockHitProcessor.swift */,
+				4C02939F2AE1D4540093CCBA /* MockNetworkService.swift */,
+				4C0293A72AE1D4540093CCBA /* NetworkRequestHelper.swift */,
+				4C0293AE2AE1D4550093CCBA /* RealNetworkService.swift */,
+				4C0293A62AE1D4540093CCBA /* TestableExtensionRuntime.swift */,
+				4C0293AF2AE1D4550093CCBA /* TestableNetworkRequest.swift */,
+				4C0293A92AE1D4540093CCBA /* TestBase.swift */,
+				4C0293AB2AE1D4550093CCBA /* TestConstants.swift */,
+				4C0293A52AE1D4540093CCBA /* TestUtils.swift */,
+				4C0293AA2AE1D4550093CCBA /* UserDefaults+Test.swift */,
 				D4967534251130D3001F5F95 /* Info.plist */,
 			);
 			path = Sources;
@@ -215,6 +266,7 @@
 				TargetAttributes = {
 					D444995E2519506B0093B364 = {
 						CreatedOnToolsVersion = 12.0;
+						LastSwiftMigration = 1500;
 					};
 					D496756B25117262001F5F95 = {
 						CreatedOnToolsVersion = 11.7;
@@ -365,6 +417,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C0293BC2AE1D4550093CCBA /* TestConstants.swift in Sources */,
+				4C0293BB2AE1D4550093CCBA /* UserDefaults+Test.swift in Sources */,
+				4C0293BF2AE1D4550093CCBA /* RealNetworkService.swift in Sources */,
+				4C0293BA2AE1D4550093CCBA /* TestBase.swift in Sources */,
+				4C0293B52AE1D4550093CCBA /* MockHitProcessor.swift in Sources */,
+				4C0293B42AE1D4550093CCBA /* CountDownLatch.swift in Sources */,
+				4C0293B82AE1D4550093CCBA /* NetworkRequestHelper.swift in Sources */,
+				4C0293B92AE1D4550093CCBA /* AnyCodable+Array.swift in Sources */,
+				4C0293BE2AE1D4550093CCBA /* MockDataQueue.swift in Sources */,
+				4C0293B02AE1D4550093CCBA /* MockNetworkService.swift in Sources */,
+				4C0293C02AE1D4550093CCBA /* TestableNetworkRequest.swift in Sources */,
+				4C0293B12AE1D4550093CCBA /* InstrumentedExtension.swift in Sources */,
+				4C0293B62AE1D4550093CCBA /* TestUtils.swift in Sources */,
+				4C0293B32AE1D4550093CCBA /* EventHub+Test.swift in Sources */,
+				4C0293BD2AE1D4550093CCBA /* MockDataStore.swift in Sources */,
+				4C0293B72AE1D4550093CCBA /* TestableExtensionRuntime.swift in Sources */,
+				4C0293B22AE1D4550093CCBA /* FileManager+Testable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +465,7 @@
 			baseConfigurationReference = 12C2D99438B3AFCC415CE05C /* Pods-AEPTestUtils.debug.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -420,6 +490,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -432,6 +503,7 @@
 			baseConfigurationReference = FF52424F6578F8C2C8893E5D /* Pods-AEPTestUtils.release.xcconfig */;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -606,6 +678,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD5E7AA3DFCAE33634061318 /* Pods-UnitTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FKGEE875K4;
 				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
@@ -627,6 +700,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FA085216E06413034AC11F06 /* Pods-UnitTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FKGEE875K4;
 				INFOPLIST_FILE = Tests/UnitTests/Info.plist;
