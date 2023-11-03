@@ -38,6 +38,10 @@
 		4C0293BE2AE1D4550093CCBA /* MockDataQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AD2AE1D4550093CCBA /* MockDataQueue.swift */; };
 		4C0293BF2AE1D4550093CCBA /* RealNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AE2AE1D4550093CCBA /* RealNetworkService.swift */; };
 		4C0293C02AE1D4550093CCBA /* TestableNetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293AF2AE1D4550093CCBA /* TestableNetworkRequest.swift */; };
+		4C0293C22AE1D9AD0093CCBA /* XCTestCase+AnyCodableAsserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0293C12AE1D9AD0093CCBA /* XCTestCase+AnyCodableAsserts.swift */; };
+		4C7043472AF45A98008CF67D /* EventSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7043462AF45A98008CF67D /* EventSpec.swift */; };
+		4C7043492AF45B05008CF67D /* URL+Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7043482AF45B05008CF67D /* URL+Testable.swift */; };
+		4C9CF7C82AE20A7300EB88D4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9CF7C72AE20A7300EB88D4 /* XCTest.framework */; };
 		72EC4ED272DA96D1B2F44F4D /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E05720B5778E784DC19DA9C /* Pods_UnitTests.framework */; };
 		D4ABABAE251A7D95008076BF /* AEPTestUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D444995F2519506B0093B364 /* AEPTestUtils.framework */; };
 		E6CACBEEB618C1273B24F1AE /* Pods_AEPTestUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C185B9927DF9E0701D766B /* Pods_AEPTestUtils.framework */; };
@@ -94,6 +98,10 @@
 		4C0293AD2AE1D4550093CCBA /* MockDataQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataQueue.swift; sourceTree = "<group>"; };
 		4C0293AE2AE1D4550093CCBA /* RealNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealNetworkService.swift; sourceTree = "<group>"; };
 		4C0293AF2AE1D4550093CCBA /* TestableNetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestableNetworkRequest.swift; sourceTree = "<group>"; };
+		4C0293C12AE1D9AD0093CCBA /* XCTestCase+AnyCodableAsserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+AnyCodableAsserts.swift"; sourceTree = "<group>"; };
+		4C7043462AF45A98008CF67D /* EventSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSpec.swift; sourceTree = "<group>"; };
+		4C7043482AF45B05008CF67D /* URL+Testable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Testable.swift"; sourceTree = "<group>"; };
+		4C9CF7C72AE20A7300EB88D4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D444995F2519506B0093B364 /* AEPTestUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AEPTestUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4967534251130D3001F5F95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4ABABDA251A8142008076BF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -109,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C9CF7C82AE20A7300EB88D4 /* XCTest.framework in Frameworks */,
 				E6CACBEEB618C1273B24F1AE /* Pods_AEPTestUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,6 +137,7 @@
 		3BB2159D8E84140309C411FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C9CF7C72AE20A7300EB88D4 /* XCTest.framework */,
 				D4ABABDA251A8142008076BF /* UIKit.framework */,
 				1E05720B5778E784DC19DA9C /* Pods_UnitTests.framework */,
 				34C185B9927DF9E0701D766B /* Pods_AEPTestUtils.framework */,
@@ -161,6 +171,7 @@
 				4C0293A82AE1D4540093CCBA /* AnyCodable+Array.swift */,
 				4C0293A32AE1D4540093CCBA /* CountDownLatch.swift */,
 				4C0293A22AE1D4540093CCBA /* EventHub+Test.swift */,
+				4C7043462AF45A98008CF67D /* EventSpec.swift */,
 				4C0293A12AE1D4540093CCBA /* FileManager+Testable.swift */,
 				4C0293A02AE1D4540093CCBA /* InstrumentedExtension.swift */,
 				4C0293AD2AE1D4550093CCBA /* MockDataQueue.swift */,
@@ -174,7 +185,9 @@
 				4C0293A92AE1D4540093CCBA /* TestBase.swift */,
 				4C0293AB2AE1D4550093CCBA /* TestConstants.swift */,
 				4C0293A52AE1D4540093CCBA /* TestUtils.swift */,
+				4C7043482AF45B05008CF67D /* URL+Testable.swift */,
 				4C0293AA2AE1D4550093CCBA /* UserDefaults+Test.swift */,
+				4C0293C12AE1D9AD0093CCBA /* XCTestCase+AnyCodableAsserts.swift */,
 				D4967534251130D3001F5F95 /* Info.plist */,
 			);
 			path = Sources;
@@ -420,9 +433,11 @@
 				4C0293BC2AE1D4550093CCBA /* TestConstants.swift in Sources */,
 				4C0293BB2AE1D4550093CCBA /* UserDefaults+Test.swift in Sources */,
 				4C0293BF2AE1D4550093CCBA /* RealNetworkService.swift in Sources */,
+				4C7043492AF45B05008CF67D /* URL+Testable.swift in Sources */,
 				4C0293BA2AE1D4550093CCBA /* TestBase.swift in Sources */,
 				4C0293B52AE1D4550093CCBA /* MockHitProcessor.swift in Sources */,
 				4C0293B42AE1D4550093CCBA /* CountDownLatch.swift in Sources */,
+				4C0293C22AE1D9AD0093CCBA /* XCTestCase+AnyCodableAsserts.swift in Sources */,
 				4C0293B82AE1D4550093CCBA /* NetworkRequestHelper.swift in Sources */,
 				4C0293B92AE1D4550093CCBA /* AnyCodable+Array.swift in Sources */,
 				4C0293BE2AE1D4550093CCBA /* MockDataQueue.swift in Sources */,
@@ -432,6 +447,7 @@
 				4C0293B62AE1D4550093CCBA /* TestUtils.swift in Sources */,
 				4C0293B32AE1D4550093CCBA /* EventHub+Test.swift in Sources */,
 				4C0293BD2AE1D4550093CCBA /* MockDataStore.swift in Sources */,
+				4C7043472AF45A98008CF67D /* EventSpec.swift in Sources */,
 				4C0293B72AE1D4550093CCBA /* TestableExtensionRuntime.swift in Sources */,
 				4C0293B22AE1D4550093CCBA /* FileManager+Testable.swift in Sources */,
 			);
@@ -609,13 +625,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
@@ -664,12 +681,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

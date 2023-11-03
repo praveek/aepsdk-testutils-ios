@@ -15,13 +15,13 @@ import AEPServices
 import XCTest
 
 /// Instrumented extension that registers a wildcard listener for intercepting events in current session. Use it along with `TestBase`
-class InstrumentedExtension: NSObject, Extension {
+public class InstrumentedExtension: NSObject, Extension {
     private static let logTag = "InstrumentedExtension"
-    var name = "com.adobe.InstrumentedExtension"
-    var friendlyName = "InstrumentedExtension"
-    static var extensionVersion = "1.0.0"
-    var metadata: [String: String]?
-    var runtime: ExtensionRuntime
+    public var name = "com.adobe.InstrumentedExtension"
+    public var friendlyName = "InstrumentedExtension"
+    public static var extensionVersion = "1.0.0"
+    public var metadata: [String: String]?
+    public var runtime: ExtensionRuntime
 
     // Expected events Dictionary - key: EventSpec, value: the expected count
     static var expectedEvents = ThreadSafeDictionary<EventSpec, CountDownLatch>()
@@ -29,17 +29,17 @@ class InstrumentedExtension: NSObject, Extension {
     // All the events seen by this listener that are not of type instrumentedExtension - key: EventSpec, value: received events with EventSpec type and source
     static var receivedEvents = ThreadSafeDictionary<EventSpec, [Event]>()
 
-    func onRegistered() {
+    public func onRegistered() {
         runtime.registerListener(type: EventType.wildcard, source: EventSource.wildcard, listener: wildcardListenerProcessor)
     }
 
-    func onUnregistered() {}
+    public func onUnregistered() {}
 
     public func readyForEvent(_ event: Event) -> Bool {
         return true
     }
 
-    required init?(runtime: ExtensionRuntime) {
+    required public init?(runtime: ExtensionRuntime) {
         self.runtime = runtime
     }
 
@@ -104,7 +104,7 @@ class InstrumentedExtension: NSObject, Extension {
         runtime.unregisterExtension()
     }
 
-    static func reset() {
+    public static func reset() {
         receivedEvents = ThreadSafeDictionary<EventSpec, [Event]>()
         expectedEvents = ThreadSafeDictionary<EventSpec, CountDownLatch>()
     }

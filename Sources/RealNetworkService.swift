@@ -15,10 +15,10 @@ import Foundation
 import XCTest
 
 /// Overriding NetworkService used for tests that require real outgoing network requests
-class RealNetworkService: NetworkService {
+public class RealNetworkService: NetworkService {
     private let helper: NetworkRequestHelper = NetworkRequestHelper()
 
-    override func connectAsync(networkRequest: NetworkRequest, completionHandler: ((HttpConnection) -> Void)? = nil) {
+    public override func connectAsync(networkRequest: NetworkRequest, completionHandler: ((HttpConnection) -> Void)? = nil) {
         helper.recordSentNetworkRequest(networkRequest)
         super.connectAsync(networkRequest: networkRequest, completionHandler: { (connection: HttpConnection) in
             self.helper.addResponse(for: networkRequest, responseConnection: connection)
@@ -37,7 +37,7 @@ class RealNetworkService: NetworkService {
     /// - Parameter networkRequest: The `NetworkRequest` for which the response should be returned.
     /// - Returns: The array of `HttpConnection` responses for the given request or `nil` if not found.
     /// - seeAlso: ``assertAllNetworkRequestExpectations``
-    func getResponses(for networkRequest: NetworkRequest) -> [HttpConnection]? {
+    public func getResponses(for networkRequest: NetworkRequest) -> [HttpConnection]? {
         return helper.getResponses(for: networkRequest)
     }
 
@@ -47,11 +47,11 @@ class RealNetworkService: NetworkService {
     ///   - file: The file from which the method is called, used for localized assertion failures.
     ///   - line: The line from which the method is called, used for localized assertion failures.
     /// - SeeAlso: ``setExpectation(for:)``
-    func assertAllNetworkRequestExpectations(file: StaticString = #file, line: UInt = #line) {
+    public func assertAllNetworkRequestExpectations(file: StaticString = #file, line: UInt = #line) {
         helper.assertAllNetworkRequestExpectations(file: file, line: line)
     }
-    
-    func reset() {
+
+    public func reset() {
         helper.reset()
     }
 
@@ -62,7 +62,7 @@ class RealNetworkService: NetworkService {
     ///   - expectedCount: The number of times the request is expected to be sent. The default value is 1.
     ///   - file: The file from which the method is called, used for localized assertion failures.
     ///   - line: The line from which the method is called, used for localized assertion failures.
-    func setExpectation(for networkRequest: NetworkRequest, expectedCount: Int32 = 1, file: StaticString = #file, line: UInt = #line) {
+    public func setExpectation(for networkRequest: NetworkRequest, expectedCount: Int32 = 1, file: StaticString = #file, line: UInt = #line) {
         helper.setExpectation(for: networkRequest, expectedCount: expectedCount, file: file, line: line)
     }
 }

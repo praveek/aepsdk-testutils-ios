@@ -14,12 +14,12 @@ import Foundation
 import XCTest
 
 /// CountDown latch to be used for asserts and expectations
-class CountDownLatch {
+public class CountDownLatch {
     private let initialCount: Int32
     private var currentCount: Int32
     private let waitSemaphore = DispatchSemaphore(value: 0)
 
-    init(_ expectedCount: Int32) {
+    public init(_ expectedCount: Int32) {
         guard expectedCount > 0 else {
             assertionFailure("CountDownLatch requires a count greater than 0")
             self.currentCount = 0
@@ -31,19 +31,19 @@ class CountDownLatch {
         self.initialCount = expectedCount
     }
 
-    func getCurrentCount() -> Int32 {
+    public func getCurrentCount() -> Int32 {
         return currentCount
     }
 
-    func getInitialCount() -> Int32 {
+    public func getInitialCount() -> Int32 {
         return initialCount
     }
 
-    func await(timeout: TimeInterval = 1) -> DispatchTimeoutResult {
+    public func await(timeout: TimeInterval = 1) -> DispatchTimeoutResult {
         return currentCount > 0 ? waitSemaphore.wait(timeout: (DispatchTime.now() + timeout)) : DispatchTimeoutResult.success
     }
 
-    func countDown() {
+    public func countDown() {
         OSAtomicDecrement32(&currentCount)
         if currentCount == 0 {
             waitSemaphore.signal()
