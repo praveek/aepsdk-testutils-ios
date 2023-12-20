@@ -270,5 +270,4 @@ class AnyCodableAssertsTests: XCTestCase, AnyCodableAsserts {
             assertTypeMatch(expected: expected, actual: actual, exactMatchPaths: ["key1[*]"])
         }
     }
-
 }
