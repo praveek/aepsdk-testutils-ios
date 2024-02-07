@@ -658,7 +658,7 @@ class AnyCodablePathOptionsTests: XCTestCase, AnyCodableAsserts {
         }
         """
 
-        assertExactMatch(expected: expected, actual: actual, pathOptions: ValueTypeMatch(paths: "key1[0]"), WildcardMatch(paths: "key1[0]"))
+        assertExactMatch(expected: expected, actual: actual, pathOptions: ValueTypeMatch(paths: "key1[0]"), AnyOrderMatch(paths: "key1[0]"))
     }
 
     // MARK: Multi-path tests
@@ -852,7 +852,7 @@ class AnyCodablePathOptionsTests: XCTestCase, AnyCodableAsserts {
         }
         """
         XCTExpectFailure("Validation should fail when key names not provided") {
-            assertTypeMatch(expected: expected, actual: actual, pathOptions: KeyMustBeAbsent(paths: "events[0].request.path", scope: .subtree))
+            assertTypeMatch(expected: expected, actual: actual, pathOptions: KeyMustBeAbsent(paths: "events[*].request.path"))
         }
     }
 
@@ -922,6 +922,41 @@ class AnyCodablePathOptionsTests: XCTestCase, AnyCodableAsserts {
             assertExactMatch(expected: expected, actual: actual, pathOptions: KeyMustBeAbsent(paths: "key2.key3"))
         }
     }
+
+//    func testKeyMustBeAbsent_SubtreeOptionPropagates_WithDictionary() {
+//        let expected = """
+//        {
+//          "key0-0": {
+//            "key1-0": {
+//              "key2-0":{
+//                "key3-0": 1
+//              }
+//            }
+//          }
+//        }
+//        """
+//
+//        let actual = """
+//        {
+//          "key0-0": {
+//            "key1-0": {
+//              "key2-0":{
+//                "key3-0": 1,
+//                "disallowed-key": 1
+//              },
+//              "disallowed-key": 1
+//            }
+//          }
+//        }
+//        """
+//
+//        XCTExpectFailure("Validation should fail when path option is not satisfied") {
+//            assertExactMatch(expected: expected, actual: actual, pathOptions: KeyMustBeAbsent(paths: nil, keyNames: "disallowed-key", scope: .subtree))
+//        }
+//        XCTExpectFailure("Validation should fail when path option is not satisfied") {
+//            assertTypeMatch(expected: expected, actual: actual, pathOptions: KeyMustBeAbsent(paths: nil, keyNames: "disallowed-key", scope: .subtree))
+//        }
+//    }
 
     // MARK: ValueExactMatch
     func testValueExactMatch_WithDefaultPathsInit_CorrectlyFails() {
@@ -1025,6 +1060,6 @@ class AnyCodablePathOptionsTests: XCTestCase, AnyCodableAsserts {
         [2, 1]
         """
 
-        assertExactMatch(expected: expected, actual: actual, pathOptions: WildcardMatch())
+        assertExactMatch(expected: expected, actual: actual, pathOptions: AnyOrderMatch())
     }
 }
