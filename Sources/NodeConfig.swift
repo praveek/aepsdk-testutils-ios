@@ -372,6 +372,7 @@ public class NodeConfig: Hashable {
         let pathComponent = pathComponents.removeFirst()
         var nextNodes: [NodeConfig] = []
         for node in nodes {
+            // Note: the `[*]` case is processed as name = "[*]" not name is nil
             guard let pathComponentName = pathComponent.name else { continue }
 
             let child = findOrCreateChild(of: node, named: pathComponentName, isWildcard: pathComponent.isWildcard)
@@ -381,7 +382,13 @@ public class NodeConfig: Hashable {
                 nextNodes.append(contentsOf: node.children)
             }
             if isLegacyMode && pathComponent.isAnyOrder {
-                node.options[.anyOrderMatch] = Config(isActive: true)
+                // This is the legacy AnyOrder that should apply to all children
+                // Apply the option to the parent level so it applies to all children
+                if pathComponentName == "[*]" {
+                    node.options[.anyOrderMatch] = Config(isActive: true)
+                } else {
+                    child.options[.anyOrderMatch] = Config(isActive: true)
+                }
             }
         }
         updateTree(nodes: nextNodes, with: pathConfig, pathComponents: pathComponents, isLegacyMode: isLegacyMode)
@@ -402,8 +409,7 @@ public class NodeConfig: Hashable {
                 let isWildcard = stringComponent == "*"
                 if isWildcard {
                     pathComponents.append(PathComponent(name: stringComponent, isAnyOrder: false, isArray: false, isWildcard: isWildcard))
-                }
-                else {
+                } else {
                     pathComponents.append(PathComponent(name: stringComponent.replacingOccurrences(of: "\\*", with: "*"), isAnyOrder: false, isArray: false, isWildcard: isWildcard))
                 }
             }
@@ -413,7 +419,7 @@ public class NodeConfig: Hashable {
                 // Check for array wildcard case
                 if arrayComponent == "[*]" {
                     pathComponents.append(PathComponent(name: arrayComponent, isAnyOrder: true, isArray: true, isWildcard: true))
-                // indexes represent the "named" child elements of arrays
+                    // indexes represent the "named" child elements of arrays
                 } else {
                     guard let indexResult = getArrayIndexAndAnyOrder(from: arrayComponent, file: file, line: line) else {
                         // Test failure emitted by extractIndexAndWildcardStatus
@@ -438,19 +444,16 @@ public class NodeConfig: Hashable {
                 node.wildcardChildren = newChild
                 return newChild
             }
-        }
-        else {
+        } else {
             if let existingChild = node.children.first(where: { $0.name == name }) {
                 return existingChild
-            }
-            else {
+            } else {
                 // If a wildcard child already exists, use that as the base
                 if let wildcardTemplateChild = wildcardChildren?.deepCopy() {
                     wildcardTemplateChild.name = name
                     node.children.insert(wildcardTemplateChild)
                     return wildcardTemplateChild
-                }
-                else {
+                } else {
                     // Apply subtreeOptions to the child
                     let newChild = NodeConfig(name: name, subtreeOptions: node.subtreeOptions)
                     node.children.insert(newChild)
@@ -702,39 +705,55 @@ extension NodeConfig: CustomStringConvertible {
     }
 
     private func describeNode(indentation: Int) -> String {
-        var result = ""
+        var result = indentation == 0 ? "\n" : ""
         let indentString = String(repeating: "  ", count: indentation) // Two spaces per indentation level
 
         // Node name
         result += "\(indentString)Name: \(name ?? "<Unnamed>")\n"
 
-        result += "\(indentString)FINAL options:\n"
+        var finalOptionsDescriptions: [String] = []
 
-        result += "\(indentString)Any Order  : \(anyOrderMatch)\n"
-        result += "\(indentString)Equal Count: \(collectionEqualCount)\n"
-        result += "\(indentString)Exact Match: \(primitiveExactMatch)\n"
-        result += "\(indentString)Key Absent : \(keyMustBeAbsent)\n"
+        if anyOrderMatch.isActive {
+            finalOptionsDescriptions.append("\(indentString)Any Order  : \(anyOrderMatch)")
+        }
+        if collectionEqualCount.isActive {
+            finalOptionsDescriptions.append("\(indentString)Equal Count: \(collectionEqualCount)")
+        }
+        if primitiveExactMatch.isActive {
+            finalOptionsDescriptions.append("\(indentString)Exact Match: \(primitiveExactMatch)")
+        }
+        if keyMustBeAbsent.isActive {
+            finalOptionsDescriptions.append("\(indentString)Key Absent : \(keyMustBeAbsent)")
+        }
 
-        // Node options
-        // Accumulate options in a temporary string
-        let sortedOptions = options.sorted { $0.key < $1.key }
+        // Append FINAL options to the result
+        if finalOptionsDescriptions.isEmpty {
+            result += "\(indentString)FINAL options: none active\n"
+        } else {
+            result += "\(indentString)FINAL options:\n"
+            result += finalOptionsDescriptions.joined(separator: "\n") + "\n"
+        }
+
+        // Node options - Only include options where config is TRUE
+        let filteredOptions = options.filter { $1.isActive }
+        let sortedOptions = filteredOptions.sorted { $0.key < $1.key }
         var optionsDescription = sortedOptions.map { key, config in
             "\(indentString)  \(key): \(config)"
         }.joined(separator: "\n")
 
-        // Append options to the result if there are any
+        // Append filtered options to the result if there are any
         if !optionsDescription.isEmpty {
             result += "\(indentString)Options:\n" + optionsDescription + "\n"
         }
 
-        // Subtree
-        // Accumulate options in a temporary string
-        let sortedSubtreeOptions = subtreeOptions.sorted { $0.key < $1.key }
+        // Subtree options - Only include options where config is TRUE
+        let filteredSubtreeOptions = subtreeOptions.filter { $1.isActive }
+        let sortedSubtreeOptions = filteredSubtreeOptions.sorted { $0.key < $1.key }
         var subtreeOptionsDescription = sortedSubtreeOptions.map { key, config in
             "\(indentString)  \(key): \(config)"
         }.joined(separator: "\n")
 
-        // Append options to the result if there are any
+        // Append filtered subtree options to the result if there are any
         if !subtreeOptionsDescription.isEmpty {
             result += "\(indentString)Subtree options:\n" + subtreeOptionsDescription + "\n"
         }
