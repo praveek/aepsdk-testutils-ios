@@ -50,7 +50,8 @@ public class CountDownLatch {
     }
 
     public func countDown() {
-        OSAtomicDecrement32(&currentCount)
+        currentCount -= 1
+        
         if currentCount == 0 {
             waitSemaphore.signal()
         }
