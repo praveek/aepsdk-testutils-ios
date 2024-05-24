@@ -15,15 +15,20 @@ import XCTest
 
 /// CountDown latch to be used for asserts and expectations
 public class CountDownLatch {
-    private let initialCount: Int32
-    private var currentCount: Int32
+    private var initialCount: Int32 = 0
+    
+    private let queue: DispatchQueue = .init(label: "com.adobe.testutils.countdownlatch.queue")
+    private var _currentCount: Int32 = 0
+    private var currentCount: Int32 {
+        get { queue.sync { self._currentCount } }
+        set { queue.async { self._currentCount = newValue } }
+    }
+    
     private let waitSemaphore = DispatchSemaphore(value: 0)
 
     public init(_ expectedCount: Int32) {
         guard expectedCount > 0 else {
             assertionFailure("CountDownLatch requires a count greater than 0")
-            self.currentCount = 0
-            self.initialCount = 0
             return
         }
 
@@ -52,6 +57,5 @@ public class CountDownLatch {
         if currentCount < 0 {
             print("Count Down decreased more times than expected.")
         }
-
     }
 }
