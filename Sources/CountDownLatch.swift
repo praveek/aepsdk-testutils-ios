@@ -15,7 +15,7 @@ import XCTest
 
 /// CountDown latch to be used for asserts and expectations
 public class CountDownLatch {
-    private var initialCount: Int32 = 0
+    private let initialCount: Int32
     
     private let queue: DispatchQueue = .init(label: "com.adobe.testutils.countdownlatch.queue")
     private var _currentCount: Int32 = 0
@@ -28,12 +28,13 @@ public class CountDownLatch {
 
     public init(_ expectedCount: Int32) {
         guard expectedCount > 0 else {
+            self.initialCount = 0
             assertionFailure("CountDownLatch requires a count greater than 0")
             return
         }
 
-        self.currentCount = expectedCount
         self.initialCount = expectedCount
+        self.currentCount = expectedCount
     }
 
     public func getCurrentCount() -> Int32 {
